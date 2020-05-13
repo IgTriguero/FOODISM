@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
-  static const routeName = '/register';
+class HelpScreen extends StatelessWidget {
+  static const routeName = '/help';
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,7 @@ class RegisterScreen extends StatelessWidget {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
+      body: Text("Ayudame que tengo muchos quereseres"),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/widgets/drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   static const routeName = '/home';
@@ -7,19 +8,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vengo del Super'),
+        title: Text('FOODISM',style: TextStyle(fontFamily: "BalsamiqSans",color: Theme.of(context).accentColor,fontSize: 40),),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      //drawer: AppDrawer(),
+      drawer: AppDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: Center(
-              child: Image.asset('assets/images/logo.png'),
-            ),
-          ),
           Flexible(
             flex: 2,
             child: Card(

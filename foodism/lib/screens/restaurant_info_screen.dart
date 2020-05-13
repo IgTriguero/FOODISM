@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatelessWidget {
-  static const routeName = '/register';
+class RestaurantScreen extends StatelessWidget {
+  static const routeName = '/restaurant';
 
   @override
   Widget build(BuildContext context) {

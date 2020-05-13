@@ -114,7 +114,7 @@ class _LoginScreen extends State<LoginScreen> {
                         RaisedButton(
                           color: Theme.of(context).accentColor,
                           onPressed: () async {
-                            
+                            Navigator.of(context).pushReplacementNamed('/home');
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(15),

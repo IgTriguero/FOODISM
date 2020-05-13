@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/screens/chef_info_screen.dart';
+import 'package:foodism/screens/chefs_screen.dart';
+import 'package:foodism/screens/help_screen.dart';
 import 'package:foodism/screens/home.dart';
+import 'package:foodism/screens/locations_screen.dart';
 import 'package:foodism/screens/login_screen.dart';
+import 'package:foodism/screens/pay_methods_screen.dart';
+import 'package:foodism/screens/personal_info_screen.dart';
+import 'package:foodism/screens/recipes_screen.dart';
+import 'package:foodism/screens/register_screen.dart';
+import 'package:foodism/screens/restaurant_info_screen.dart';
+import 'package:foodism/screens/restaurants_screen.dart';
 import 'package:foodism/services/auth.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +36,16 @@ class MyApp extends StatelessWidget {
         home: LoginScreen(),
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
+          ChefInfoScreen.routeName: (context) => ChefInfoScreen(),
+          ChefsScreen.routeName: (context) => ChefsScreen(),
+          HelpScreen.routeName: (context) => HelpScreen(),
+          LocationsScreen.routeName: (context) => LocationsScreen(),
+          PayMethodsScreen.routeName: (context) => PayMethodsScreen(),
+          PersonalInfoScreen.routeName: (context) => PersonalInfoScreen(),
+          RecipesScreen.routeName: (context) => RecipesScreen(),
+          RegisterScreen.routeName: (context) => RegisterScreen(),
+          RestaurantScreen.routeName: (context) => RestaurantScreen(),
+          RestaurantsScreen.routeName: (context) => RestaurantsScreen(),
         },
       ),
     );
