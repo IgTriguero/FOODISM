@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/Providers/data.dart';
+import 'package:provider/provider.dart';
 
 class LocationsScreen extends StatelessWidget {
   static const routeName = '/locations';
@@ -34,21 +36,32 @@ class _ListView extends StatefulWidget {
 }
 
 class __ListViewState extends State<_ListView> {
-  int tarjeta = 0;
-
   @override
   Widget build(BuildContext context) {
+
+    DataProvider data = Provider.of<DataProvider>(context, listen: false);
+    print(data);
+    List locations = data.users[data.usuarioActual]['locations'];
+    print(locations);
     return ListView.builder(
-      itemCount: 2,
+      itemCount: locations.length,
       itemBuilder: (context, index) => Card(
           child: ListTile(
-            title: Text("Casa de mierda"),
-            subtitle: Text("Calle de la mierda 2"),
-            selected: index == tarjeta ? true : false,
-            trailing: Icon(index == tarjeta ? Icons.check_box: Icons.check_box_outline_blank, color: Colors.green,),
+            title: Text(locations[index]['street']),
+            subtitle: Text(locations[index]['number']),
+            selected: locations[index]['selected'],
+            trailing: Icon(locations[index]['selected'] ? Icons.check_box: Icons.check_box_outline_blank, color: Colors.green,),
             onTap: () {
               setState(() {
-                tarjeta = index;
+                for(int i = 0; i < locations.length; i++){
+                  if(i == index){
+                    locations[i]['selected'] = true;
+                    Provider.of<DataProvider>(context, listen: false).users[data.usuarioActual]['locations'][i]['selected'] = true;
+                  } else {
+                    locations[i]['selected'] = false;
+                    Provider.of<DataProvider>(context, listen: false).users[data.usuarioActual]['locations'][i]['selected'] = false;
+                  }
+                }
               });
             },
           ),
