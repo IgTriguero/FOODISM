@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/Providers/data.dart';
 import 'package:provider/provider.dart';
-import 'package:foodism/services/auth.dart';
 
 import 'register_screen.dart';
 
@@ -15,6 +15,7 @@ class _LoginScreen extends State<LoginScreen> {
   String _email;
   String _password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -23,6 +24,27 @@ class _LoginScreen extends State<LoginScreen> {
       return 'Introduce un email correcto';
     else
       return null;
+  }
+
+  _validateAndSubmit(BuildContext context) {
+    if (!this._formKey.currentState.validate()) return;
+
+    this._formKey.currentState.save();
+    final index = Provider.of<DataProvider>(context, listen: false)
+        .users
+        .indexWhere(
+            (user) => user['email'] == _email.trim() && user['password'] == _password);
+
+    if (index < 0) {
+      _scaffoldKey.currentState.showSnackBar(
+        SnackBar(
+          content: Text('Email o contraseña incorrectos'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return;
+    }
+    Provider.of<DataProvider>(context, listen: false).login(index);
   }
 
   void _showDialog(String title, String body) {
@@ -50,6 +72,7 @@ class _LoginScreen extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -113,8 +136,8 @@ class _LoginScreen extends State<LoginScreen> {
                         ),
                         RaisedButton(
                           color: Theme.of(context).accentColor,
-                          onPressed: () async {
-                            Navigator.of(context).pushReplacementNamed('/home');
+                          onPressed: () {
+                            this._validateAndSubmit(context);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(15),
@@ -139,8 +162,7 @@ class _LoginScreen extends State<LoginScreen> {
             height: 60,
             color: Theme.of(context).primaryColor,
             child: InkWell(
-              onTap: () => {
-                },
+              onTap: () => {},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,

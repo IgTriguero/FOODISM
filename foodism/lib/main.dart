@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/Providers/data.dart';
 import 'package:foodism/screens/chef_info_screen.dart';
 import 'package:foodism/screens/chefs_screen.dart';
 import 'package:foodism/screens/help_screen.dart';
@@ -11,7 +12,6 @@ import 'package:foodism/screens/recipes_screen.dart';
 import 'package:foodism/screens/register_screen.dart';
 import 'package:foodism/screens/restaurant_info_screen.dart';
 import 'package:foodism/screens/restaurants_screen.dart';
-import 'package:foodism/services/auth.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -23,19 +23,24 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => AuthService(),
+          create: (context) => DataProvider(),
         ),
       ],
       child: MaterialApp(
         title: 'FOODISM',
         theme: ThemeData(
-            primaryColor: Color(0xFF75440B),
-            accentColor: Color(0xFFF3B92F),
-            canvasColor: Colors.grey[200],
-            fontFamily: 'CeraPro'),
-        home: LoginScreen(),
+          primaryColor: Color(0xFF75440B),
+          accentColor: Color(0xFFF3B92F),
+          canvasColor: Colors.grey[200],
+          fontFamily: 'CeraPro',
+        ),
+        home: Selector<DataProvider, bool>(
+          selector: (context, dataProvider) => dataProvider.logeado,
+          builder: (context, logeado, child) => logeado ? HomeScreen() : LoginScreen(),
+        ),
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
+          LoginScreen.routeName: (context) => LoginScreen(),
           ChefInfoScreen.routeName: (context) => ChefInfoScreen(),
           ChefsScreen.routeName: (context) => ChefsScreen(),
           HelpScreen.routeName: (context) => HelpScreen(),
