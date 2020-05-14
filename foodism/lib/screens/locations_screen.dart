@@ -21,7 +21,14 @@ class LocationsScreen extends StatelessWidget {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body: _ListView()
+      body: _ListView(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
@@ -38,34 +45,28 @@ class _ListView extends StatefulWidget {
 class __ListViewState extends State<_ListView> {
   @override
   Widget build(BuildContext context) {
-
-    DataProvider data = Provider.of<DataProvider>(context, listen: false);
-    print(data);
-    List locations = data.users[data.usuarioActual]['locations'];
-    print(locations);
+    Map<String, dynamic> user = Provider.of<DataProvider>(context, listen: false).getCurrentUser();
+    List locations = user['locations'];
     return ListView.builder(
       itemCount: locations.length,
       itemBuilder: (context, index) => Card(
-          child: ListTile(
-            title: Text(locations[index]['street']),
-            subtitle: Text(locations[index]['number']),
-            selected: locations[index]['selected'],
-            trailing: Icon(locations[index]['selected'] ? Icons.check_box: Icons.check_box_outline_blank, color: Colors.green,),
-            onTap: () {
-              setState(() {
-                for(int i = 0; i < locations.length; i++){
-                  if(i == index){
-                    locations[i]['selected'] = true;
-                    Provider.of<DataProvider>(context, listen: false).users[data.usuarioActual]['locations'][i]['selected'] = true;
-                  } else {
-                    locations[i]['selected'] = false;
-                    Provider.of<DataProvider>(context, listen: false).users[data.usuarioActual]['locations'][i]['selected'] = false;
-                  }
-                }
-              });
-            },
+        child: ListTile(
+          title: Text(locations[index]['street']),
+          subtitle: Text(locations[index]['number']),
+          selected: locations[index]['selected'],
+          trailing: Icon(
+            locations[index]['selected']
+                ? Icons.check_box
+                : Icons.check_box_outline_blank,
+            color: Colors.green,
           ),
+          onTap: () {
+            setState(() {
+              Provider.of<DataProvider>(context, listen: false).setSelectedLocation(index);
+            });
+          },
         ),
+      ),
     );
   }
 }

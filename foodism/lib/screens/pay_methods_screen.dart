@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/Providers/data.dart';
+import 'package:provider/provider.dart';
 
 class PayMethodsScreen extends StatelessWidget {
   static const routeName = '/pay_methods';
@@ -19,7 +21,14 @@ class PayMethodsScreen extends StatelessWidget {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body: _ListView()
+      body: _ListView(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }
@@ -38,18 +47,21 @@ class __ListViewState extends State<_ListView> {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, dynamic> user = Provider.of<DataProvider>(context).getCurrentUser();
+    List cards = user['cards'];
+    print(cards);
     return ListView.builder(
-      itemCount: 2,
+      itemCount: cards.length,
       itemBuilder: (context, index) => Card(
           child: ListTile(
-            title: Text("Tarjeta 1"),
-            subtitle: Text("**** **** **** 1111"),
-            selected: index == tarjeta ? true : false,
-            trailing: Icon(index == tarjeta ? Icons.check_box: Icons.check_box_outline_blank, color: Colors.green,),
+            title: Text(cards[index]['number']),
+            subtitle: Text(cards[index]['date']),
+            selected: cards[index]['selected'],
+            trailing: Icon(cards[index]['selected'] ? Icons.check_box: Icons.check_box_outline_blank, color: Colors.green,),
             onTap: () {
               setState(() {
-                tarjeta = index;
-              });
+                Provider.of<DataProvider>(context, listen: false).setSelectedCard(index);
+            });
             },
           ),
         ),
