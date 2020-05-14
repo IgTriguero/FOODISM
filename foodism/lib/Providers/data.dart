@@ -53,7 +53,10 @@ class DataProvider with ChangeNotifier {
     }
     users[usuarioActual]['cards'].add({'number': numero, 'selected': true});
   }
-  addUbicacion(){
-
+  addUbicacion(String calle, String numero){
+    for (int i = 0; i < users[usuarioActual]['locations'].length; i++){
+      users[usuarioActual]['locations']['selected'] = false;
+    }
+    users[usuarioActual]['locations'].add({'street': calle, 'number': numero, 'selected': true})
   }
 }
