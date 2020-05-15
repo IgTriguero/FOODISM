@@ -19,7 +19,28 @@ class HelpScreen extends StatelessWidget {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body: Text("Ayudame que tengo muchos quereseres"),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 30,),
+            Text(
+              "Politicas",
+              style: TextStyle(
+                  color: Theme.of(context).primaryColor, fontSize: 30),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+                "Para proteger tus datos personales, Foodism toma todas las precauciones razonables y sigue las mejores prácticas de la industria para evitar su pérdida, mal uso, acceso indebido, divulgación, alteración o destrucción de los mismos. La seguridad de tus datos está garantizada, ya que toman todas las medidas de seguridad necesarias para ello. Puedes consultar su política de privacidad para tener más información."
+                ,style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

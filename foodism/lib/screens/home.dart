@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
                   child: Text(
                     'Comida a domicilio',
                     style: TextStyle(
+                      color: Theme.of(context).primaryColor,
                       fontSize: 28,
                     ),
                   ),
@@ -34,6 +35,8 @@ class HomeScreen extends StatelessWidget {
                   //Navigator.of(context).pushNamed(ListaCompraScreen.routeName);
                 },
               ),
+              color: Color(0xAAF3B92F),
+              elevation: 0,
             ),
           ),
           Flexible(
@@ -44,6 +47,7 @@ class HomeScreen extends StatelessWidget {
                   child: Text(
                     'Chef a domicilio',
                     style: TextStyle(
+                      color: Theme.of(context).primaryColor,
                       fontSize: 28,
                     ),
                   ),
@@ -52,6 +56,8 @@ class HomeScreen extends StatelessWidget {
                   //Navigator.of(context).pushNamed(ListadeListasScreen.routeName);
                 },
               ),
+              color: Color(0xAAF3B92F),
+              elevation: 0,
             ),
           ),
         ],
