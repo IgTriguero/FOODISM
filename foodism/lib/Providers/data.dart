@@ -22,8 +22,8 @@ class DataProvider with ChangeNotifier {
           'selected': false
         }
       ],
-      'recetas': [],
-      'restaurantes': [1, 2]
+      'recipes': [2,3],
+      'restaurants': [1, 2]
     },
     {
       'email': 'ignacio@correo.es',
@@ -42,8 +42,8 @@ class DataProvider with ChangeNotifier {
         },
         {'street': 'C/ keko', 'number': '5', 'selected': false}
       ],
-      'recetas': [],
-      'restaurantes': [3, 5]
+      'recipes': [0,4],
+      'restaurants': [3, 5]
     },
     {
       'email': 'miguel@correo.es',
@@ -58,8 +58,8 @@ class DataProvider with ChangeNotifier {
         {'street': 'C/ mekuen', 'number': '7', 'selected': true},
         {'street': 'C/ drinkresponsibly', 'number': '7', 'selected': false}
       ],
-      'recetas': [],
-      'restaurantes': [4, 3]
+      'recipes': [1,5],
+      'restaurants': [4, 3]
     }
   ];
   List<Map<String, dynamic>> restaurants = [
@@ -139,10 +139,51 @@ class DataProvider with ChangeNotifier {
   List<Map<String, dynamic>> recipes = [
     {
       'id': 0,
-      'name': 'JulianPutoDios',
-      'rating': '100%',
-      'tiempo': '11min',
-      'restaurante': 5
+      'name': 'Cocretas',
+      'steps': ['echar aceite', 'freirlas coño'],
+      'ingredientss': [{'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'}, {'ingredient':'croquetas congeladas de la abuela', 'cantidad': 'las suficientes para alimentar a 4 personas mayores, aunque solo vayas a comer tu'}],
+      'notes': 'si sobran te las comes, aqui no sobra nada',
+      'people': 1
+    },
+    {
+      'id': 1,
+      'name': 'Paella',
+      'steps': ['echar pollo, pimiento y tomate en la paella', 'echar el arroz', 'echar un poco de agua'],
+      'ingredientss': [{'ingredient': 'arroz', 'cantidad': '500 g'}, {'ingredient': 'pollo', 'cantidad': '100 g'}, {'ingredient': 'pimiento', 'cantidad': '100 g'}, {'ingredient': 'agua', 'cantidad': '100 cL'}],
+      'notes': 'que quede un poco caldoso',
+      'people': 2
+    },
+    {
+      'id': 2,
+      'name': 'Ensalada Cesar',
+      'steps': ['cortar el pollo', 'echar la ensalada', 'echar el pollo y el queso', 'echar la salsa cesar por encima', 'remover'],
+      'ingredientss': [{'ingredient': 'lechuga', 'cantidad': '5 hojas'}, {'ingredient':'pollo', 'cantidad': '100 g'}, {'ingredient':'queso', 'cantidad': '100 g'}, {'ingredient':'salsa cesar', 'cantidad': '100 g'}],
+      'notes': 'el queso tiene que ser rallado',
+      'people': 1
+    },
+    {
+      'id': 3,
+      'name': 'Sandiwch vegetal',
+      'steps': ['tostar el pan', 'cortar lechuga, tomate y huevo', 'poner mayonesa en la base', 'poner atun, huevo, lechuda y tomate (por ese orden)'],
+      'ingredientss': [{'ingredient': 'pan bimbo', 'cantidad': '80 panes'}, {'ingredient':'atun', 'cantidad': '5 kg'}, {'ingredient':'mayonesa', 'cantidad': '500 g'}, {'ingredient':'lechuga', 'cantidad': '30 hojas'}, {'ingredient':'tomate', 'cantidad': '20 piezas'}, {'ingredient':'huevo', 'cantidad': '20 piezas'}],
+      'notes': 'hacer dos sandwiches por personas',
+      'people': 20
+    },
+    {
+      'id': 4,
+      'name': 'Crema de calabacin',
+      'steps': ['cortar calabacin, patatas y puerro', 'meterlo en una olla a 90º'],
+      'ingredientss': [{'ingredient': 'calabacin', 'cantidad': '100 g'}, {'ingredient':'patata', 'cantidad': '30 g'}, {'ingredient':'puerro', 'cantidad': '30 g'}],
+      'notes': ' ',
+      'people': 4
+    },
+    {
+      'id': 5,
+      'name': 'Filetes de pollo',
+      'steps': ['echar aceite', 'poner el filete dentro del aceite, no encima, dentro'],
+      'ingredientss': [{'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'}, {'ingredient':'filetes previamente empanados', 'cantidad': 'un par o 6'}],
+      'notes': 'El pollo tiene que estar muerto y fileteado, si no el proceso de empane puede ser complicado',
+      'people': 1
     }
   ];
 
@@ -161,14 +202,15 @@ class DataProvider with ChangeNotifier {
   }
 
   addReceta(String nombre, List<String> pasos,
-      List<Map<String, dynamic>> ingredientes, String notas) {
+      List<Map<String, dynamic>> ingredientes, String notas, int people) {
     users[usuarioActual]['recetas'].add(recipes.length);
     recipes.add({
       'id': recipes.length,
       'name': nombre,
       'steps': pasos,
       'ingredients': ingredientes,
-      'notes': notas
+      'notes': notas,
+      'people': people
     });
   }
 
@@ -212,5 +254,13 @@ class DataProvider with ChangeNotifier {
         users[usuarioActual]['cards'][i]['selected'] = false;
       }
     }
+  }
+  List<Map<String, dynamic>> getRecipes(){
+    List recetas = users[usuarioActual]['recipes'];
+    List<Map<String, dynamic>> recetasRet = [];
+    for (int i = 0; i < recetas.length; i++) {
+      recetasRet.add(this.recipes[i]);
+    }
+    return recetasRet;
   }
 }

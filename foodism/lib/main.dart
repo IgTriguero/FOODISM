@@ -8,6 +8,7 @@ import 'package:foodism/screens/locations_screen.dart';
 import 'package:foodism/screens/login_screen.dart';
 import 'package:foodism/screens/pay_methods_screen.dart';
 import 'package:foodism/screens/personal_info_screen.dart';
+import 'package:foodism/screens/recipe_creation_screen.dart';
 import 'package:foodism/screens/recipes_screen.dart';
 import 'package:foodism/screens/register_screen.dart';
 import 'package:foodism/screens/restaurant_info_screen.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
           RegisterScreen.routeName: (context) => RegisterScreen(),
           RestaurantScreen.routeName: (context) => RestaurantScreen(),
           RestaurantsScreen.routeName: (context) => RestaurantsScreen(),
+          RecipeCreationScreen.routeName: (context) => RecipeCreationScreen(),
         },
       ),
     );
