@@ -13,6 +13,29 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
   int currPage = 0;
   PageController pageController = PageController();
 
+  String nombre;
+  List<Map> ingredientes;
+  String people;
+  List<String> pasos;
+  String notas;
+
+  _setNombre(String nombre){
+    this.nombre = nombre;
+  }
+  _setListaIngredientes(List<Map> ingredientes){
+    this.ingredientes = ingredientes;
+  }
+  _setPersonas(String personas){
+    this.people = personas;
+  }
+  _setPasos(List<String> pasos){
+    this.pasos = pasos;
+  }
+  _setNotas(String notas){
+    this.notas = notas;
+  }
+
+
   @override
   void dispose() {
     pageController.dispose();
@@ -60,11 +83,11 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                 });
               },
               children: <Widget>[
-                Recipe1(),
-                Recipe2(),
-                Recipe3(),
-                Recipe4(),
-                Recipe5(),
+                Recipe1(_setNombre),
+                Recipe2(_setListaIngredientes),
+                Recipe3(_setPersonas),
+                Recipe4(_setPasos),
+                Recipe5(_setNotas),
               ],
             ),
           ),
@@ -117,16 +140,25 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                           ),
                         ),
                       ),
-                      onTap: () {
-                        setState(() {
-                          if (currPage != 4) {
-                            currPage++;
-                            this.pageController.animateToPage(currPage,
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.decelerate);
-                          }
-                        });
-                      },
+                      onTap: this.currPage == 4
+                          ? () {
+                              print(this.nombre);
+                              print(this.ingredientes);
+                              print(this.people);
+                              print(this.pasos);
+                              print(this.notas);
+                              Provider.of<DataProvider>(context).addReceta(nombre, pasos, ingredientes, notas, people);
+                            }
+                          : () {
+                              setState(() {
+                                if (currPage != 4) {
+                                  currPage++;
+                                  this.pageController.animateToPage(currPage,
+                                      duration: Duration(milliseconds: 300),
+                                      curve: Curves.decelerate);
+                                }
+                              });
+                            },
                     ),
                     color: Color(0xAAF3B92F),
                     elevation: 0,
@@ -162,6 +194,8 @@ class Circle extends StatelessWidget {
 }
 
 class Recipe1 extends StatelessWidget {
+  final Function _setNombre;
+  Recipe1([this._setNombre]);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -189,6 +223,7 @@ class Recipe1 extends StatelessWidget {
                 borderSide: BorderSide(color: Theme.of(context).primaryColor),
               ),
             ),
+            onChanged: (value) => _setNombre(value),
           ),
           Spacer(flex: 2),
         ],
@@ -198,6 +233,8 @@ class Recipe1 extends StatelessWidget {
 }
 
 class Recipe2 extends StatefulWidget {
+  final Function _setListaIngredientes;
+  Recipe2([this._setListaIngredientes]);
   @override
   _Recipe2State createState() => _Recipe2State();
 }
@@ -228,12 +265,14 @@ class _Recipe2State extends State<Recipe2> {
     _cantidadIngrediente = null;
 
     _form.currentState.reset();
+    widget._setListaIngredientes(_listaIngredientes);
   }
 
   void _removeItemButton(var item) {
     setState(() {
       _listaIngredientes.remove(item);
     });
+    widget._setListaIngredientes(_listaIngredientes);
   }
 
   @override
@@ -352,6 +391,9 @@ class _Recipe2State extends State<Recipe2> {
 }
 
 class Recipe3 extends StatelessWidget {
+  final Function _setPersonas;
+  Recipe3([this._setPersonas]);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -379,6 +421,7 @@ class Recipe3 extends StatelessWidget {
                 borderSide: BorderSide(color: Theme.of(context).primaryColor),
               ),
             ),
+            onChanged: (value) => this._setPersonas(value),
           ),
           Spacer(flex: 2),
         ],
@@ -388,6 +431,8 @@ class Recipe3 extends StatelessWidget {
 }
 
 class Recipe4 extends StatefulWidget {
+  final Function _setPasos;
+  Recipe4([this._setPasos]);
   @override
   _Recipe4State createState() => _Recipe4State();
 }
@@ -411,12 +456,14 @@ class _Recipe4State extends State<Recipe4> {
     _descripcion = null;
 
     _form.currentState.reset();
+    widget._setPasos(_listaPasos);
   }
 
   void _removeItemButton(var item) {
     setState(() {
       _listaPasos.remove(item);
     });
+    widget._setPasos(_listaPasos);
   }
 
   @override
@@ -500,6 +547,8 @@ class _Recipe4State extends State<Recipe4> {
 }
 
 class Recipe5 extends StatelessWidget {
+  final Function _setNotas;
+  Recipe5([this._setNotas]);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -529,6 +578,7 @@ class Recipe5 extends StatelessWidget {
             ),
             keyboardType: TextInputType.multiline,
             maxLines: 5,
+            onChanged: (value) => this._setNotas(value),
           ),
           Spacer(flex: 2),
         ],
@@ -536,4 +586,3 @@ class Recipe5 extends StatelessWidget {
     );
   }
 }
-

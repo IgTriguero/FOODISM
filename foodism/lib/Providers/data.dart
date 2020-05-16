@@ -143,7 +143,7 @@ class DataProvider with ChangeNotifier {
       'steps': ['echar aceite', 'freirlas coño'],
       'ingredientss': [{'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'}, {'ingredient':'croquetas congeladas de la abuela', 'cantidad': 'las suficientes para alimentar a 4 personas mayores, aunque solo vayas a comer tu'}],
       'notes': 'si sobran te las comes, aqui no sobra nada',
-      'people': 1
+      'people': '1'
     },
     {
       'id': 1,
@@ -151,7 +151,7 @@ class DataProvider with ChangeNotifier {
       'steps': ['echar pollo, pimiento y tomate en la paella', 'echar el arroz', 'echar un poco de agua'],
       'ingredientss': [{'ingredient': 'arroz', 'cantidad': '500 g'}, {'ingredient': 'pollo', 'cantidad': '100 g'}, {'ingredient': 'pimiento', 'cantidad': '100 g'}, {'ingredient': 'agua', 'cantidad': '100 cL'}],
       'notes': 'que quede un poco caldoso',
-      'people': 2
+      'people': '2'
     },
     {
       'id': 2,
@@ -159,7 +159,7 @@ class DataProvider with ChangeNotifier {
       'steps': ['cortar el pollo', 'echar la ensalada', 'echar el pollo y el queso', 'echar la salsa cesar por encima', 'remover'],
       'ingredientss': [{'ingredient': 'lechuga', 'cantidad': '5 hojas'}, {'ingredient':'pollo', 'cantidad': '100 g'}, {'ingredient':'queso', 'cantidad': '100 g'}, {'ingredient':'salsa cesar', 'cantidad': '100 g'}],
       'notes': 'el queso tiene que ser rallado',
-      'people': 1
+      'people': '1'
     },
     {
       'id': 3,
@@ -167,7 +167,7 @@ class DataProvider with ChangeNotifier {
       'steps': ['tostar el pan', 'cortar lechuga, tomate y huevo', 'poner mayonesa en la base', 'poner atun, huevo, lechuda y tomate (por ese orden)'],
       'ingredientss': [{'ingredient': 'pan bimbo', 'cantidad': '80 panes'}, {'ingredient':'atun', 'cantidad': '5 kg'}, {'ingredient':'mayonesa', 'cantidad': '500 g'}, {'ingredient':'lechuga', 'cantidad': '30 hojas'}, {'ingredient':'tomate', 'cantidad': '20 piezas'}, {'ingredient':'huevo', 'cantidad': '20 piezas'}],
       'notes': 'hacer dos sandwiches por personas',
-      'people': 20
+      'people': '20'
     },
     {
       'id': 4,
@@ -175,7 +175,7 @@ class DataProvider with ChangeNotifier {
       'steps': ['cortar calabacin, patatas y puerro', 'meterlo en una olla a 90º'],
       'ingredientss': [{'ingredient': 'calabacin', 'cantidad': '100 g'}, {'ingredient':'patata', 'cantidad': '30 g'}, {'ingredient':'puerro', 'cantidad': '30 g'}],
       'notes': ' ',
-      'people': 4
+      'people': '4'
     },
     {
       'id': 5,
@@ -183,7 +183,7 @@ class DataProvider with ChangeNotifier {
       'steps': ['echar aceite', 'poner el filete dentro del aceite, no encima, dentro'],
       'ingredientss': [{'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'}, {'ingredient':'filetes previamente empanados', 'cantidad': 'un par o 6'}],
       'notes': 'El pollo tiene que estar muerto y fileteado, si no el proceso de empane puede ser complicado',
-      'people': 1
+      'people': '1'
     }
   ];
 
@@ -202,7 +202,7 @@ class DataProvider with ChangeNotifier {
   }
 
   addReceta(String nombre, List<String> pasos,
-      List<Map<String, dynamic>> ingredientes, String notas, int people) {
+      List<Map<String, dynamic>> ingredientes, String notas, String people) {
     users[usuarioActual]['recetas'].add(recipes.length);
     recipes.add({
       'id': recipes.length,
@@ -212,6 +212,7 @@ class DataProvider with ChangeNotifier {
       'notes': notas,
       'people': people
     });
+    notifyListeners();
   }
 
   addRestaurante(int id) {
