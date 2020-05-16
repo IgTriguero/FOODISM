@@ -28,6 +28,7 @@ class AppDrawer extends StatelessWidget {
           ),
           title: Text('Información personal', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
           onTap: () {
+            Navigator.of(context).pop();
             Navigator.of(context).pushNamed("/personal_info");
           },
         ),
@@ -39,6 +40,7 @@ class AppDrawer extends StatelessWidget {
           ),
           title: Text('Métodos de pago', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
           onTap: () {
+            Navigator.of(context).pop();
             Navigator.of(context).pushNamed("/pay_methods");
           },
         ),
@@ -50,6 +52,7 @@ class AppDrawer extends StatelessWidget {
           ),
           title: Text('Ubicaciones', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
           onTap: () {
+            Navigator.of(context).pop();
             Navigator.of(context).pushNamed("/locations");
           },
         ),
@@ -61,6 +64,7 @@ class AppDrawer extends StatelessWidget {
           ),
           title: Text('Recetas', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
           onTap: () {
+            Navigator.of(context).pop();
             Navigator.of(context).pushNamed("/recipes");
           },
         ),
@@ -84,6 +88,7 @@ class AppDrawer extends StatelessWidget {
           ),
           title: Text('Ayuda', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
           onTap: () {
+            Navigator.of(context).pop();
             Navigator.of(context).pushNamed("/help");
           },
         ),

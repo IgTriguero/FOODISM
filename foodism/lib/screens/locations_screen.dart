@@ -58,7 +58,7 @@ class __ListViewState extends State<_ListView> {
             locations[index]['selected']
                 ? Icons.check_box
                 : Icons.check_box_outline_blank,
-            color: Colors.green,
+            color: Theme.of(context).accentColor,
           ),
           onTap: () {
             setState(() {

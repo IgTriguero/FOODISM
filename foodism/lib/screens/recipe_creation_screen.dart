@@ -48,7 +48,6 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
               Circle(currPage >= 2),
               Circle(currPage >= 3),
               Circle(currPage >= 4),
-              Circle(currPage >= 5),
             ],
           ),
           Expanded(
@@ -66,7 +65,6 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                 Recipe3(),
                 Recipe4(),
                 Recipe5(),
-                Recipe6(),
               ],
             ),
           ),
@@ -79,7 +77,7 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                     child: InkWell(
                       child: Center(
                         child: Text(
-                          'Atrás',
+                          'Anterior',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 20,
@@ -101,7 +99,9 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                         );
                       },
                     ),
-                    color: Color(0xAAF3B92F),
+                    color: this.currPage == 0
+                        ? Color(0x33F3B92F)
+                        : Color(0xAAF3B92F),
                     elevation: 0,
                   ),
                 ),
@@ -110,7 +110,7 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                     child: InkWell(
                       child: Center(
                         child: Text(
-                          'Siguiente',
+                          this.currPage == 4 ? 'Finalizar' : 'Siguiente',
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                             fontSize: 20,
@@ -119,7 +119,7 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                       ),
                       onTap: () {
                         setState(() {
-                          if (currPage != 5) {
+                          if (currPage != 4) {
                             currPage++;
                             this.pageController.animateToPage(currPage,
                                 duration: Duration(milliseconds: 300),
@@ -387,10 +387,115 @@ class Recipe3 extends StatelessWidget {
   }
 }
 
-class Recipe4 extends StatelessWidget {
+class Recipe4 extends StatefulWidget {
+  @override
+  _Recipe4State createState() => _Recipe4State();
+}
+
+class _Recipe4State extends State<Recipe4> {
+  List<String> _listaPasos = [];
+  final _form = GlobalKey<FormState>();
+  String _descripcion;
+
+  void _submitItem() {
+    final isValid = _form.currentState.validate();
+
+    if (!isValid) return;
+
+    _form.currentState.save();
+
+    setState(() {
+      _listaPasos.add(_descripcion);
+    });
+
+    _descripcion = null;
+
+    _form.currentState.reset();
+  }
+
+  void _removeItemButton(var item) {
+    setState(() {
+      _listaPasos.remove(item);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(child: null);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Form(
+            key: _form,
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  flex: 3,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'Paso',
+                      border: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Theme.of(context).primaryColor),
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Theme.of(context).primaryColor),
+                      ),
+                    ),
+                    keyboardType: TextInputType.multiline,
+                    maxLines: 3,
+                    validator: (value) {
+                      if (value.isEmpty) return 'Rellena este campo';
+                      return null;
+                    },
+                    onSaved: (value) {
+                      _descripcion = value;
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        FlatButton(
+          onPressed: _submitItem,
+          child: Text(
+            'Añadir paso',
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).accentColor),
+          ),
+        ),
+        SizedBox(height: 10),
+        Expanded(
+          child: ListView(
+            children: _listaPasos
+                .map(
+                  (item) => ListTile(
+                    key: ValueKey(item),
+                    title: Text(
+                      item,
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    trailing: Container(
+                      child: IconButton(
+                        icon: Icon(Icons.delete),
+                        color: Colors.red,
+                        onPressed: () => _removeItemButton(item),
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -432,11 +537,3 @@ class Recipe5 extends StatelessWidget {
   }
 }
 
-class Recipe6 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Text('6'),
-    );
-  }
-}
