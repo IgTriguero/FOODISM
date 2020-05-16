@@ -36,19 +36,10 @@ class RecipesScreen extends StatelessWidget {
   }
 }
 
-class _ListView extends StatefulWidget {
-  const _ListView({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  __ListViewState createState() => __ListViewState();
-}
-
-class __ListViewState extends State<_ListView> {
+class _ListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> recipes = Provider.of<DataProvider>(context, listen: false).getRecipes();
+    List<Map<String, dynamic>> recipes = Provider.of<DataProvider>(context).getRecipes();
     return ListView.builder(
       itemCount: recipes.length,
       itemBuilder: (context, index) => Card(

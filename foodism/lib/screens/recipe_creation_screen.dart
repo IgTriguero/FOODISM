@@ -19,22 +19,25 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
   List<String> pasos;
   String notas;
 
-  _setNombre(String nombre){
+  _setNombre(String nombre) {
     this.nombre = nombre;
   }
-  _setListaIngredientes(List<Map> ingredientes){
+
+  _setListaIngredientes(List<Map> ingredientes) {
     this.ingredientes = ingredientes;
   }
-  _setPersonas(String personas){
+
+  _setPersonas(String personas) {
     this.people = personas;
   }
-  _setPasos(List<String> pasos){
+
+  _setPasos(List<String> pasos) {
     this.pasos = pasos;
   }
-  _setNotas(String notas){
+
+  _setNotas(String notas) {
     this.notas = notas;
   }
-
 
   @override
   void dispose() {
@@ -142,12 +145,14 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                       ),
                       onTap: this.currPage == 4
                           ? () {
-                              print(this.nombre);
-                              print(this.ingredientes);
-                              print(this.people);
-                              print(this.pasos);
-                              print(this.notas);
-                              Provider.of<DataProvider>(context).addReceta(nombre, pasos, ingredientes, notas, people);
+                              Provider.of<DataProvider>(context, listen: false)
+                                  .addReceta(
+                                      this.nombre,
+                                      this.pasos,
+                                      this.ingredientes,
+                                      this.notas,
+                                      this.people);
+                              Navigator.of(context).pop();
                             }
                           : () {
                               setState(() {
@@ -366,10 +371,12 @@ class _Recipe2State extends State<Recipe2> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          Text(
-                            item['cantidad'],
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColor,
+                          FittedBox(
+                            child: Text(
+                              item['cantidad'],
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                              ),
                             ),
                           ),
                           IconButton(

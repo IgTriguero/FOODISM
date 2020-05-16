@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/screens/chefs_screen.dart';
+import 'package:foodism/screens/restaurants_screen.dart';
 import 'package:foodism/widgets/drawer.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,7 +21,6 @@ class HomeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Flexible(
-            flex: 2,
             child: Card(
               child: InkWell(
                 child: Center(
@@ -32,7 +33,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  //Navigator.of(context).pushNamed(ListaCompraScreen.routeName);
+                  Navigator.of(context).pushNamed(RestaurantsScreen.routeName);
                 },
               ),
               color: Color(0xAAF3B92F),
@@ -40,7 +41,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Flexible(
-            flex: 2,
             child: Card(
               child: InkWell(
                 child: Center(
@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 onTap: () {
-                  //Navigator.of(context).pushNamed(ListadeListasScreen.routeName);
+                  Navigator.of(context).pushNamed(ChefsScreen.routeName);
                 },
               ),
               color: Color(0xAAF3B92F),

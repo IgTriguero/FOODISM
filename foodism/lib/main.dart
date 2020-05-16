@@ -11,7 +11,6 @@ import 'package:foodism/screens/personal_info_screen.dart';
 import 'package:foodism/screens/recipe_creation_screen.dart';
 import 'package:foodism/screens/recipes_screen.dart';
 import 'package:foodism/screens/register_screen.dart';
-import 'package:foodism/screens/restaurant_info_screen.dart';
 import 'package:foodism/screens/restaurants_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +41,6 @@ class MyApp extends StatelessWidget {
         routes: {
           HomeScreen.routeName: (context) => HomeScreen(),
           LoginScreen.routeName: (context) => LoginScreen(),
-          ChefInfoScreen.routeName: (context) => ChefInfoScreen(),
           ChefsScreen.routeName: (context) => ChefsScreen(),
           HelpScreen.routeName: (context) => HelpScreen(),
           LocationsScreen.routeName: (context) => LocationsScreen(),
@@ -50,7 +48,6 @@ class MyApp extends StatelessWidget {
           PersonalInfoScreen.routeName: (context) => PersonalInfoScreen(),
           RecipesScreen.routeName: (context) => RecipesScreen(),
           RegisterScreen.routeName: (context) => RegisterScreen(),
-          RestaurantScreen.routeName: (context) => RestaurantScreen(),
           RestaurantsScreen.routeName: (context) => RestaurantsScreen(),
           RecipeCreationScreen.routeName: (context) => RecipeCreationScreen(),
         },

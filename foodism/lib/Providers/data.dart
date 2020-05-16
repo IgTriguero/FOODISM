@@ -68,35 +68,40 @@ class DataProvider with ChangeNotifier {
       'name': 'McDonalds',
       'slogan': 'Donde tus caballos se convierten en comida',
       'rating': '80%',
-      'tiempo': '12min'
+      'tiempo': '12min',
+      'img': 'https://www.cinconoticias.com/wp-content/uploads/Mc-Donalds-flotante-abandonado.jpg'
     },
     {
       'id': 1,
       'name': 'El restaurante de tus pesadillas',
       'slogan': 'Donde ignacio trabaja',
       'rating': '0%',
-      'tiempo': '1min'
+      'tiempo': '1min',
+      'img': 'https://breaking911.com/wp-content/uploads/2015/10/img_1640.jpg'
     },
     {
       'id': 2,
       'name': 'KFC',
       'slogan': 'Kentucky Fried Children',
       'rating': '90%',
-      'tiempo': '32min'
+      'tiempo': '32min',
+      'img': 'https://media.fotki.com/2v2H3V71zx9eSoV.jpg'
     },
     {
       'id': 3,
       'name': 'Burguer king',
       'slogan': 'Hamborguesas delisiosas',
       'rating': '68%',
-      'tiempo': '19min'
+      'tiempo': '19min',
+      'img': 'https://i.redd.it/vsx7o398ikq31.jpg'
     },
     {
       'id': 4,
       'name': 'Tierra Burrito',
       'slogan': 'Donde tus sueños se vuelven comida',
       'rating': '100%',
-      'tiempo': '10min'
+      'tiempo': '10min',
+      'img': 'https://console.listae.com/files/2019/08/tierra_burrito_bar_serrano_madrid.jpg'
     }
   ];
   List<Map<String, dynamic>> chefs = [
@@ -105,35 +110,40 @@ class DataProvider with ChangeNotifier {
       'name': 'Rodolfo',
       'rating': '80%',
       'tiempo': '12min',
-      'restaurante': 2
+      'restaurante': 2,
+      'img': 'https://media.istockphoto.com/photos/happy-chef-pointing-picture-id901093724'
     },
     {
       'id': 1,
       'name': 'Ignacio',
       'rating': '0%',
       'tiempo': '18min',
-      'restaurante': 1
+      'restaurante': 1,
+      'img': 'https://images.megapixl.com/3001/30014151.jpg'
     },
     {
       'id': 2,
       'name': 'Eustaquio',
       'rating': '90%',
       'tiempo': '17min',
-      'restaurante': 3
+      'restaurante': 3,
+      'img': 'https://thumbs.dreamstime.com/z/chef-35582114.jpg'
     },
     {
       'id': 3,
       'name': 'Hermenegildo',
       'rating': '78%',
       'tiempo': '16min',
-      'restaurante': 4
+      'restaurante': 4,
+      'img': 'https://previews.123rf.com/images/alexraths/alexraths1201/alexraths120100010/12027059-chef-presenting-isolated-on-white-background.jpg'
     },
     {
       'id': 4,
       'name': 'JulianPutoDios',
       'rating': '100%',
       'tiempo': '11min',
-      'restaurante': 5
+      'restaurante': 5,
+      'img': 'https://previews.123rf.com/images/ferrerivideo/ferrerivideo1309/ferrerivideo130900111/22274675-sexy-chef.jpg'
     }
   ];
   List<Map<String, dynamic>> recipes = [
@@ -202,10 +212,11 @@ class DataProvider with ChangeNotifier {
   }
 
   addReceta(String nombre, List<String> pasos,
-      List<Map<String, dynamic>> ingredientes, String notas, String people) {
-    users[usuarioActual]['recetas'].add(recipes.length);
+      List<Map> ingredientes, String notas, String people) {
+    users[usuarioActual]['recipes'].add(recipes.length);
+    int id = recipes.length;
     recipes.add({
-      'id': recipes.length,
+      'id': id,
       'name': nombre,
       'steps': pasos,
       'ingredients': ingredientes,
@@ -213,10 +224,11 @@ class DataProvider with ChangeNotifier {
       'people': people
     });
     notifyListeners();
+    print(this.recipes);
   }
 
   addRestaurante(int id) {
-    users[usuarioActual]['restaurantes'].add(id);
+    users[usuarioActual]['restaurants'].add(id);
   }
 
   addTarjeta(String numero) {
@@ -260,8 +272,14 @@ class DataProvider with ChangeNotifier {
     List recetas = users[usuarioActual]['recipes'];
     List<Map<String, dynamic>> recetasRet = [];
     for (int i = 0; i < recetas.length; i++) {
-      recetasRet.add(this.recipes[i]);
+      recetasRet.add(this.recipes[recetas[i]]);
     }
     return recetasRet;
+  }
+  Map<String, dynamic> getRestaurante(int id){
+    return this.restaurants[id];
+  }
+  Map<String, dynamic> getChef(int id){
+    return this.chefs[id];
   }
 }
