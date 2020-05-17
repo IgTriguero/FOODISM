@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodism/Providers/data.dart';
+import 'package:foodism/screens/recipes_screen.dart';
 import 'package:provider/provider.dart';
 
 class RestaurantScreen extends StatelessWidget {
@@ -35,20 +36,56 @@ class RestaurantScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Text(restaurante['name']),
-          Text(restaurante['slogan']),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            restaurante['name'],
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            restaurante['slogan'],
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 15,
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(restaurante['rating']),
-              Text(restaurante['tiempo'])
+              Text(
+                restaurante['rating'],
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20,
+                ),
+              ),
+              Text(
+                restaurante['tiempo'],
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20,
+                ),
+              )
             ],
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Container(
+              height: 100,
               child: Card(
-                
                 child: InkWell(
                   child: Center(
                     child: Text(
@@ -65,7 +102,9 @@ class RestaurantScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,)
+          SizedBox(
+            height: 20,
+          )
         ],
       ),
     );

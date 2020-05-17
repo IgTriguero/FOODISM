@@ -24,7 +24,7 @@ class ChefInfoScreen extends StatelessWidget {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body:Column(
+      body: Column(
         children: <Widget>[
           Hero(
             tag: chef['img'],
@@ -35,19 +35,46 @@ class ChefInfoScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          Text(chef['name']),
+          SizedBox(
+            height: 15,
+          ),
+          Text(
+            chef['name'],
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 25,
+              fontWeight: FontWeight.bold
+            ),
+          ),
+          SizedBox(
+            height: 40,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(chef['rating']),
-              Text(chef['tiempo'])
+              Text(
+                chef['rating'],
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20,
+                ),
+              ),
+              Text(
+                chef['tiempo'],
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 20,
+                ),
+              )
             ],
           ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Container(
+              height: 100,
               child: Card(
-                
                 child: InkWell(
                   child: Center(
                     child: Text(
@@ -64,7 +91,9 @@ class ChefInfoScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20,)
+          SizedBox(
+            height: 20,
+          )
         ],
       ),
     );

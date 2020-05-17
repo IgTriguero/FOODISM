@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:foodism/screens/recipes_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -65,7 +65,7 @@ class AppDrawer extends StatelessWidget {
           title: Text('Recetas', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
           onTap: () {
             Navigator.of(context).pop();
-            Navigator.of(context).pushNamed("/recipes");
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => RecipesScreen()));
           },
         ),
         Divider(),

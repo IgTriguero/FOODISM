@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 
 class RecipesScreen extends StatelessWidget {
   static const routeName = '/recipes';
-
+  final int id;
+  RecipesScreen([this.id = -1]);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

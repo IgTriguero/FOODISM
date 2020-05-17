@@ -22,7 +22,7 @@ class DataProvider with ChangeNotifier {
           'selected': false
         }
       ],
-      'recipes': [2,3],
+      'recipes': [2, 3],
       'restaurants': [1, 2]
     },
     {
@@ -42,7 +42,7 @@ class DataProvider with ChangeNotifier {
         },
         {'street': 'C/ keko', 'number': '5', 'selected': false}
       ],
-      'recipes': [0,4],
+      'recipes': [0, 4],
       'restaurants': [3, 5]
     },
     {
@@ -58,7 +58,7 @@ class DataProvider with ChangeNotifier {
         {'street': 'C/ mekuen', 'number': '7', 'selected': true},
         {'street': 'C/ drinkresponsibly', 'number': '7', 'selected': false}
       ],
-      'recipes': [1,5],
+      'recipes': [1, 5],
       'restaurants': [4, 3]
     }
   ];
@@ -69,7 +69,8 @@ class DataProvider with ChangeNotifier {
       'slogan': 'Donde tus caballos se convierten en comida',
       'rating': '80%',
       'tiempo': '12min',
-      'img': 'https://www.cinconoticias.com/wp-content/uploads/Mc-Donalds-flotante-abandonado.jpg'
+      'img':
+          'https://www.cinconoticias.com/wp-content/uploads/Mc-Donalds-flotante-abandonado.jpg'
     },
     {
       'id': 1,
@@ -101,7 +102,39 @@ class DataProvider with ChangeNotifier {
       'slogan': 'Donde tus sueños se vuelven comida',
       'rating': '100%',
       'tiempo': '10min',
-      'img': 'https://console.listae.com/files/2019/08/tierra_burrito_bar_serrano_madrid.jpg'
+      'img':'https://console.listae.com/files/2019/08/tierra_burrito_bar_serrano_madrid.jpg'
+    },
+    {
+      'id': 5,
+      'name': 'La Tagliatela',
+      'slogan': 'Forno di Pietra',
+      'rating': '99%',
+      'tiempo': '21min',
+      'img': 'https://www.lavanguardia.com/r/GODO/LV/p4/WebSite/2017/05/26/Recortada/img_lbernaus_20170525-165056_imagenes_lv_terceros_hotel-eremo-rosa-menkman-flickr-kfyH--656x437@LaVanguardia-Web.jpg'
+    },
+    {
+      'id': 6,
+      'name': 'Fosters Hollywood',
+      'slogan': 'Tu restaurante de comida americana',
+      'rating': '95%',
+      'tiempo': '2min',
+      'img': 'https://i.promecal.es/IMG/2016/AA67165B-9832-97D3-4F7C08056BCBB952.JPG'
+    },
+    {
+      'id': 7,
+      'name': 'Five guys',
+      'slogan': 'Hamborguesas con Rock & Roll',
+      'rating': '98%',
+      'tiempo': '10min',
+      'img': 'https://i.ytimg.com/vi/oodBWCLTd1M/maxresdefault.jpg'
+    },
+    {
+      'id': 8,
+      'name': 'SushiYa',
+      'slogan': 'Tu suhsi favorito en un ya!',
+      'rating': '83%',
+      'tiempo': '8min',
+      'img': 'https://media-cdn.tripadvisor.com/media/photo-s/10/53/71/1d/restaurante-wok-vilafranca.jpg'
     }
   ];
   List<Map<String, dynamic>> chefs = [
@@ -111,7 +144,7 @@ class DataProvider with ChangeNotifier {
       'rating': '80%',
       'tiempo': '12min',
       'restaurante': 2,
-      'img': 'https://media.istockphoto.com/photos/happy-chef-pointing-picture-id901093724'
+      'img':'https://media.istockphoto.com/photos/happy-chef-pointing-picture-id901093724'
     },
     {
       'id': 1,
@@ -135,15 +168,47 @@ class DataProvider with ChangeNotifier {
       'rating': '78%',
       'tiempo': '16min',
       'restaurante': 4,
-      'img': 'https://previews.123rf.com/images/alexraths/alexraths1201/alexraths120100010/12027059-chef-presenting-isolated-on-white-background.jpg'
+      'img':'https://previews.123rf.com/images/alexraths/alexraths1201/alexraths120100010/12027059-chef-presenting-isolated-on-white-background.jpg'
     },
     {
       'id': 4,
-      'name': 'JulianPutoDios',
+      'name': 'JulianDiosSupremo',
       'rating': '100%',
       'tiempo': '11min',
       'restaurante': 5,
-      'img': 'https://previews.123rf.com/images/ferrerivideo/ferrerivideo1309/ferrerivideo130900111/22274675-sexy-chef.jpg'
+      'img':'https://previews.123rf.com/images/ferrerivideo/ferrerivideo1309/ferrerivideo130900111/22274675-sexy-chef.jpg'
+    },
+    {
+      'id': 5,
+      'name': 'Kekolokao',
+      'rating': '50%',
+      'tiempo': '19min',
+      'restaurante': 0,
+      'img': 'https://i.imgur.com/HxcoFV9.jpg'
+    },
+    {
+      'id': 6,
+      'name': 'Migurl',
+      'rating': '78%',
+      'tiempo': '23min',
+      'restaurante': 6,
+      'img': 'https://ep00.epimg.net/elpais/imagenes/2018/01/07/gastronotas_de_capel/1515318654_379965_1515321586_noticia_normal.jpg'
+    },
+    {
+      'id': 7,
+      'name': 'El niñote',
+      'rating': '100%',
+      'tiempo': '11min',
+      'restaurante': 7,
+      'img': 'https://static1.abc.es/media/play/2018/05/12/alberto-chicote-kWQE--620x349@abc.jpg'
+    },
+    {
+      'id': 8,
+      'name': 'Heung Min Son',
+      'rating': '93%',
+      'tiempo': '13min',
+      'restaurante': 8,
+      'img': 'https://i2.wp.com/videosgraciososgratis.com/wp-content/uploads/2018/05/DaqxbrB_u78.jpg?fit=1024%2C576'
     }
   ];
   List<Map<String, dynamic>> recipes = [
@@ -151,48 +216,104 @@ class DataProvider with ChangeNotifier {
       'id': 0,
       'name': 'Cocretas',
       'steps': ['echar aceite', 'freirlas coño'],
-      'ingredientss': [{'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'}, {'ingredient':'croquetas congeladas de la abuela', 'cantidad': 'las suficientes para alimentar a 4 personas mayores, aunque solo vayas a comer tu'}],
+      'ingredientss': [
+        {'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'},
+        {
+          'ingredient': 'croquetas congeladas de la abuela',
+          'cantidad':
+              'las suficientes para alimentar a 4 personas mayores, aunque solo vayas a comer tu'
+        }
+      ],
       'notes': 'si sobran te las comes, aqui no sobra nada',
       'people': '1'
     },
     {
       'id': 1,
       'name': 'Paella',
-      'steps': ['echar pollo, pimiento y tomate en la paella', 'echar el arroz', 'echar un poco de agua'],
-      'ingredientss': [{'ingredient': 'arroz', 'cantidad': '500 g'}, {'ingredient': 'pollo', 'cantidad': '100 g'}, {'ingredient': 'pimiento', 'cantidad': '100 g'}, {'ingredient': 'agua', 'cantidad': '100 cL'}],
+      'steps': [
+        'echar pollo, pimiento y tomate en la paella',
+        'echar el arroz',
+        'echar un poco de agua'
+      ],
+      'ingredientss': [
+        {'ingredient': 'arroz', 'cantidad': '500 g'},
+        {'ingredient': 'pollo', 'cantidad': '100 g'},
+        {'ingredient': 'pimiento', 'cantidad': '100 g'},
+        {'ingredient': 'agua', 'cantidad': '100 cL'}
+      ],
       'notes': 'que quede un poco caldoso',
       'people': '2'
     },
     {
       'id': 2,
       'name': 'Ensalada Cesar',
-      'steps': ['cortar el pollo', 'echar la ensalada', 'echar el pollo y el queso', 'echar la salsa cesar por encima', 'remover'],
-      'ingredientss': [{'ingredient': 'lechuga', 'cantidad': '5 hojas'}, {'ingredient':'pollo', 'cantidad': '100 g'}, {'ingredient':'queso', 'cantidad': '100 g'}, {'ingredient':'salsa cesar', 'cantidad': '100 g'}],
+      'steps': [
+        'cortar el pollo',
+        'echar la ensalada',
+        'echar el pollo y el queso',
+        'echar la salsa cesar por encima',
+        'remover'
+      ],
+      'ingredientss': [
+        {'ingredient': 'lechuga', 'cantidad': '5 hojas'},
+        {'ingredient': 'pollo', 'cantidad': '100 g'},
+        {'ingredient': 'queso', 'cantidad': '100 g'},
+        {'ingredient': 'salsa cesar', 'cantidad': '100 g'}
+      ],
       'notes': 'el queso tiene que ser rallado',
       'people': '1'
     },
     {
       'id': 3,
       'name': 'Sandiwch vegetal',
-      'steps': ['tostar el pan', 'cortar lechuga, tomate y huevo', 'poner mayonesa en la base', 'poner atun, huevo, lechuda y tomate (por ese orden)'],
-      'ingredientss': [{'ingredient': 'pan bimbo', 'cantidad': '80 panes'}, {'ingredient':'atun', 'cantidad': '5 kg'}, {'ingredient':'mayonesa', 'cantidad': '500 g'}, {'ingredient':'lechuga', 'cantidad': '30 hojas'}, {'ingredient':'tomate', 'cantidad': '20 piezas'}, {'ingredient':'huevo', 'cantidad': '20 piezas'}],
+      'steps': [
+        'tostar el pan',
+        'cortar lechuga, tomate y huevo',
+        'poner mayonesa en la base',
+        'poner atun, huevo, lechuda y tomate (por ese orden)'
+      ],
+      'ingredientss': [
+        {'ingredient': 'pan bimbo', 'cantidad': '80 panes'},
+        {'ingredient': 'atun', 'cantidad': '5 kg'},
+        {'ingredient': 'mayonesa', 'cantidad': '500 g'},
+        {'ingredient': 'lechuga', 'cantidad': '30 hojas'},
+        {'ingredient': 'tomate', 'cantidad': '20 piezas'},
+        {'ingredient': 'huevo', 'cantidad': '20 piezas'}
+      ],
       'notes': 'hacer dos sandwiches por personas',
       'people': '20'
     },
     {
       'id': 4,
       'name': 'Crema de calabacin',
-      'steps': ['cortar calabacin, patatas y puerro', 'meterlo en una olla a 90º'],
-      'ingredientss': [{'ingredient': 'calabacin', 'cantidad': '100 g'}, {'ingredient':'patata', 'cantidad': '30 g'}, {'ingredient':'puerro', 'cantidad': '30 g'}],
+      'steps': [
+        'cortar calabacin, patatas y puerro',
+        'meterlo en una olla a 90º'
+      ],
+      'ingredientss': [
+        {'ingredient': 'calabacin', 'cantidad': '100 g'},
+        {'ingredient': 'patata', 'cantidad': '30 g'},
+        {'ingredient': 'puerro', 'cantidad': '30 g'}
+      ],
       'notes': ' ',
       'people': '4'
     },
     {
       'id': 5,
       'name': 'Filetes de pollo',
-      'steps': ['echar aceite', 'poner el filete dentro del aceite, no encima, dentro'],
-      'ingredientss': [{'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'}, {'ingredient':'filetes previamente empanados', 'cantidad': 'un par o 6'}],
-      'notes': 'El pollo tiene que estar muerto y fileteado, si no el proceso de empane puede ser complicado',
+      'steps': [
+        'echar aceite',
+        'poner el filete dentro del aceite, no encima, dentro'
+      ],
+      'ingredientss': [
+        {'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'},
+        {
+          'ingredient': 'filetes previamente empanados',
+          'cantidad': 'un par o 6'
+        }
+      ],
+      'notes':
+          'El pollo tiene que estar muerto y fileteado, si no el proceso de empane puede ser complicado',
       'people': '1'
     }
   ];
@@ -211,8 +332,8 @@ class DataProvider with ChangeNotifier {
     this.notifyListeners();
   }
 
-  addReceta(String nombre, List<String> pasos,
-      List<Map> ingredientes, String notas, String people) {
+  addReceta(String nombre, List<String> pasos, List<Map> ingredientes,
+      String notas, String people) {
     users[usuarioActual]['recipes'].add(recipes.length);
     int id = recipes.length;
     recipes.add({
@@ -259,6 +380,7 @@ class DataProvider with ChangeNotifier {
       }
     }
   }
+
   setSelectedCard(int index) {
     for (int i = 0; i < users[usuarioActual]['cards'].length; i++) {
       if (i == index) {
@@ -268,7 +390,8 @@ class DataProvider with ChangeNotifier {
       }
     }
   }
-  List<Map<String, dynamic>> getRecipes(){
+
+  List<Map<String, dynamic>> getRecipes() {
     List recetas = users[usuarioActual]['recipes'];
     List<Map<String, dynamic>> recetasRet = [];
     for (int i = 0; i < recetas.length; i++) {
@@ -276,10 +399,12 @@ class DataProvider with ChangeNotifier {
     }
     return recetasRet;
   }
-  Map<String, dynamic> getRestaurante(int id){
+
+  Map<String, dynamic> getRestaurante(int id) {
     return this.restaurants[id];
   }
-  Map<String, dynamic> getChef(int id){
+
+  Map<String, dynamic> getChef(int id) {
     return this.chefs[id];
   }
 }

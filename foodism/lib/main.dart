@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:foodism/Providers/data.dart';
-import 'package:foodism/screens/chef_info_screen.dart';
 import 'package:foodism/screens/chefs_screen.dart';
 import 'package:foodism/screens/help_screen.dart';
 import 'package:foodism/screens/home.dart';
@@ -9,7 +8,6 @@ import 'package:foodism/screens/login_screen.dart';
 import 'package:foodism/screens/pay_methods_screen.dart';
 import 'package:foodism/screens/personal_info_screen.dart';
 import 'package:foodism/screens/recipe_creation_screen.dart';
-import 'package:foodism/screens/recipes_screen.dart';
 import 'package:foodism/screens/register_screen.dart';
 import 'package:foodism/screens/restaurants_screen.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +44,6 @@ class MyApp extends StatelessWidget {
           LocationsScreen.routeName: (context) => LocationsScreen(),
           PayMethodsScreen.routeName: (context) => PayMethodsScreen(),
           PersonalInfoScreen.routeName: (context) => PersonalInfoScreen(),
-          RecipesScreen.routeName: (context) => RecipesScreen(),
           RegisterScreen.routeName: (context) => RegisterScreen(),
           RestaurantsScreen.routeName: (context) => RestaurantsScreen(),
           RecipeCreationScreen.routeName: (context) => RecipeCreationScreen(),
