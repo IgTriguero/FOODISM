@@ -43,10 +43,10 @@ class RestaurantScreen extends StatelessWidget {
             restaurante['name'],
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-                ),
+              color: Theme.of(context).primaryColor,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           SizedBox(
             height: 15,
@@ -94,6 +94,11 @@ class RestaurantScreen extends StatelessWidget {
                         color: Theme.of(context).primaryColor,
                         fontSize: 20,
                       ),
+                    ),
+                  ),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => RecipesScreen(idRestaurante: id,),
                     ),
                   ),
                 ),

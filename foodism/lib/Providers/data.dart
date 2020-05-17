@@ -407,4 +407,8 @@ class DataProvider with ChangeNotifier {
   Map<String, dynamic> getChef(int id) {
     return this.chefs[id];
   }
+
+  Map<String, dynamic> getReceta(int id){
+    return this.recipes[id];
+  }
 }

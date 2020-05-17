@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodism/Providers/data.dart';
+import 'package:foodism/screens/recipes_screen.dart';
 import 'package:provider/provider.dart';
 
 class ChefInfoScreen extends StatelessWidget {
@@ -83,6 +84,11 @@ class ChefInfoScreen extends StatelessWidget {
                         color: Theme.of(context).primaryColor,
                         fontSize: 20,
                       ),
+                    ),
+                  ),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => RecipesScreen(idChef: id,),
                     ),
                   ),
                 ),
