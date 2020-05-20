@@ -50,28 +50,38 @@ class __ListViewState extends State<_ListView> {
     Map<String, dynamic> user =
         Provider.of<DataProvider>(context).getCurrentUser();
     List cards = user['cards'];
-    print(cards);
-    return ListView.builder(
-      itemCount: cards.length,
-      itemBuilder: (context, index) => Card(
-        child: ListTile(
-          title: Text(cards[index]['number']),
-          subtitle: Text(cards[index]['date']),
-          selected: cards[index]['selected'],
-          trailing: Icon(
-            cards[index]['selected']
-                ? Icons.check_box
-                : Icons.check_box_outline_blank,
-            color: Theme.of(context).accentColor,
-          ),
-          onTap: () {
-            setState(() {
-              Provider.of<DataProvider>(context, listen: false)
-                  .setSelectedCard(index);
-            });
-          },
-        ),
-      ),
-    );
+    return cards.length != 0
+        ? ListView.builder(
+            itemCount: cards.length,
+            itemBuilder: (context, index) => Card(
+              child: ListTile(
+                title: Text(cards[index]['number']),
+                subtitle: Text(cards[index]['date']),
+                selected: cards[index]['selected'],
+                trailing: Icon(
+                  cards[index]['selected']
+                      ? Icons.check_box
+                      : Icons.check_box_outline_blank,
+                  color: Theme.of(context).accentColor,
+                ),
+                onTap: () {
+                  setState(() {
+                    Provider.of<DataProvider>(context, listen: false)
+                        .setSelectedCard(index);
+                  });
+                },
+              ),
+            ),
+          )
+        : Center(
+            child: Text(
+              'Añade una tarjeta con el botón de abajo',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 20,
+              ),
+            ),
+          );
   }
 }

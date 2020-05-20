@@ -45,28 +45,41 @@ class _ListView extends StatefulWidget {
 class __ListViewState extends State<_ListView> {
   @override
   Widget build(BuildContext context) {
-    Map<String, dynamic> user = Provider.of<DataProvider>(context, listen: false).getCurrentUser();
+    Map<String, dynamic> user =
+        Provider.of<DataProvider>(context, listen: false).getCurrentUser();
     List locations = user['locations'];
-    return ListView.builder(
-      itemCount: locations.length,
-      itemBuilder: (context, index) => Card(
-        child: ListTile(
-          title: Text(locations[index]['street']),
-          subtitle: Text(locations[index]['number']),
-          selected: locations[index]['selected'],
-          trailing: Icon(
-            locations[index]['selected']
-                ? Icons.check_box
-                : Icons.check_box_outline_blank,
-            color: Theme.of(context).accentColor,
-          ),
-          onTap: () {
-            setState(() {
-              Provider.of<DataProvider>(context, listen: false).setSelectedLocation(index);
-            });
-          },
-        ),
-      ),
-    );
+    return locations.length != 0
+        ? ListView.builder(
+            itemCount: locations.length,
+            itemBuilder: (context, index) => Card(
+              child: ListTile(
+                title: Text(locations[index]['street']),
+                subtitle: Text(locations[index]['number']),
+                selected: locations[index]['selected'],
+                trailing: Icon(
+                  locations[index]['selected']
+                      ? Icons.check_box
+                      : Icons.check_box_outline_blank,
+                  color: Theme.of(context).accentColor,
+                ),
+                onTap: () {
+                  setState(() {
+                    Provider.of<DataProvider>(context, listen: false)
+                        .setSelectedLocation(index);
+                  });
+                },
+              ),
+            ),
+          )
+        : Center(
+            child: Text(
+              'Añade una dirección con el botón de abajo',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 20,
+              ),
+            ),
+          );
   }
 }

@@ -58,7 +58,7 @@ class DataProvider with ChangeNotifier {
         {'street': 'C/ mekuen', 'number': '7', 'selected': true},
         {'street': 'C/ drinkresponsibly', 'number': '7', 'selected': false}
       ],
-      'recipes': [1, 5],
+      'recipes': [],
       'restaurants': [4, 3]
     }
   ];
@@ -102,7 +102,8 @@ class DataProvider with ChangeNotifier {
       'slogan': 'Donde tus sueños se vuelven comida',
       'rating': '100%',
       'tiempo': '10min',
-      'img':'https://console.listae.com/files/2019/08/tierra_burrito_bar_serrano_madrid.jpg'
+      'img':
+          'https://console.listae.com/files/2019/08/tierra_burrito_bar_serrano_madrid.jpg'
     },
     {
       'id': 5,
@@ -110,7 +111,8 @@ class DataProvider with ChangeNotifier {
       'slogan': 'Forno di Pietra',
       'rating': '99%',
       'tiempo': '21min',
-      'img': 'https://www.lavanguardia.com/r/GODO/LV/p4/WebSite/2017/05/26/Recortada/img_lbernaus_20170525-165056_imagenes_lv_terceros_hotel-eremo-rosa-menkman-flickr-kfyH--656x437@LaVanguardia-Web.jpg'
+      'img':
+          'https://www.lavanguardia.com/r/GODO/LV/p4/WebSite/2017/05/26/Recortada/img_lbernaus_20170525-165056_imagenes_lv_terceros_hotel-eremo-rosa-menkman-flickr-kfyH--656x437@LaVanguardia-Web.jpg'
     },
     {
       'id': 6,
@@ -118,7 +120,8 @@ class DataProvider with ChangeNotifier {
       'slogan': 'Tu restaurante de comida americana',
       'rating': '95%',
       'tiempo': '2min',
-      'img': 'https://i.promecal.es/IMG/2016/AA67165B-9832-97D3-4F7C08056BCBB952.JPG'
+      'img':
+          'https://i.promecal.es/IMG/2016/AA67165B-9832-97D3-4F7C08056BCBB952.JPG'
     },
     {
       'id': 7,
@@ -134,7 +137,8 @@ class DataProvider with ChangeNotifier {
       'slogan': 'Tu suhsi favorito en un ya!',
       'rating': '83%',
       'tiempo': '8min',
-      'img': 'https://media-cdn.tripadvisor.com/media/photo-s/10/53/71/1d/restaurante-wok-vilafranca.jpg'
+      'img':
+          'https://media-cdn.tripadvisor.com/media/photo-s/10/53/71/1d/restaurante-wok-vilafranca.jpg'
     }
   ];
   List<Map<String, dynamic>> chefs = [
@@ -144,7 +148,8 @@ class DataProvider with ChangeNotifier {
       'rating': '80%',
       'tiempo': '12min',
       'restaurante': 2,
-      'img':'https://media.istockphoto.com/photos/happy-chef-pointing-picture-id901093724'
+      'img':
+          'https://media.istockphoto.com/photos/happy-chef-pointing-picture-id901093724'
     },
     {
       'id': 1,
@@ -168,7 +173,8 @@ class DataProvider with ChangeNotifier {
       'rating': '78%',
       'tiempo': '16min',
       'restaurante': 4,
-      'img':'https://previews.123rf.com/images/alexraths/alexraths1201/alexraths120100010/12027059-chef-presenting-isolated-on-white-background.jpg'
+      'img':
+          'https://previews.123rf.com/images/alexraths/alexraths1201/alexraths120100010/12027059-chef-presenting-isolated-on-white-background.jpg'
     },
     {
       'id': 4,
@@ -176,7 +182,8 @@ class DataProvider with ChangeNotifier {
       'rating': '100%',
       'tiempo': '11min',
       'restaurante': 5,
-      'img':'https://previews.123rf.com/images/ferrerivideo/ferrerivideo1309/ferrerivideo130900111/22274675-sexy-chef.jpg'
+      'img':
+          'https://previews.123rf.com/images/ferrerivideo/ferrerivideo1309/ferrerivideo130900111/22274675-sexy-chef.jpg'
     },
     {
       'id': 5,
@@ -192,7 +199,8 @@ class DataProvider with ChangeNotifier {
       'rating': '78%',
       'tiempo': '23min',
       'restaurante': 6,
-      'img': 'https://ep00.epimg.net/elpais/imagenes/2018/01/07/gastronotas_de_capel/1515318654_379965_1515321586_noticia_normal.jpg'
+      'img':
+          'https://ep00.epimg.net/elpais/imagenes/2018/01/07/gastronotas_de_capel/1515318654_379965_1515321586_noticia_normal.jpg'
     },
     {
       'id': 7,
@@ -200,7 +208,8 @@ class DataProvider with ChangeNotifier {
       'rating': '100%',
       'tiempo': '11min',
       'restaurante': 7,
-      'img': 'https://static1.abc.es/media/play/2018/05/12/alberto-chicote-kWQE--620x349@abc.jpg'
+      'img':
+          'https://static1.abc.es/media/play/2018/05/12/alberto-chicote-kWQE--620x349@abc.jpg'
     },
     {
       'id': 8,
@@ -208,7 +217,8 @@ class DataProvider with ChangeNotifier {
       'rating': '93%',
       'tiempo': '13min',
       'restaurante': 8,
-      'img': 'https://i2.wp.com/videosgraciososgratis.com/wp-content/uploads/2018/05/DaqxbrB_u78.jpg?fit=1024%2C576'
+      'img':
+          'https://i2.wp.com/videosgraciososgratis.com/wp-content/uploads/2018/05/DaqxbrB_u78.jpg?fit=1024%2C576'
     }
   ];
   List<Map<String, dynamic>> recipes = [
@@ -332,6 +342,19 @@ class DataProvider with ChangeNotifier {
     this.notifyListeners();
   }
 
+  register(String correo, String password, String nombre, String telefono) {
+    users.add({
+      'email': correo,
+      'password': password,
+      'name': nombre,
+      'phone': telefono,
+      'cards': [],
+      'locations': [],
+      'recipes': [],
+      'restaurants': []
+    });
+  }
+
   addReceta(String nombre, List<String> pasos, List<Map> ingredientes,
       String notas, String people) {
     users[usuarioActual]['recipes'].add(recipes.length);
@@ -408,7 +431,7 @@ class DataProvider with ChangeNotifier {
     return this.chefs[id];
   }
 
-  Map<String, dynamic> getReceta(int id){
+  Map<String, dynamic> getReceta(int id) {
     return this.recipes[id];
   }
 }
