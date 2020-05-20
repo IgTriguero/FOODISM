@@ -216,7 +216,7 @@ class DataProvider with ChangeNotifier {
       'id': 0,
       'name': 'Cocretas',
       'steps': ['echar aceite', 'freirlas coño'],
-      'ingredientss': [
+      'ingredients': [
         {'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'},
         {
           'ingredient': 'croquetas congeladas de la abuela',
@@ -235,7 +235,7 @@ class DataProvider with ChangeNotifier {
         'echar el arroz',
         'echar un poco de agua'
       ],
-      'ingredientss': [
+      'ingredients': [
         {'ingredient': 'arroz', 'cantidad': '500 g'},
         {'ingredient': 'pollo', 'cantidad': '100 g'},
         {'ingredient': 'pimiento', 'cantidad': '100 g'},
@@ -254,7 +254,7 @@ class DataProvider with ChangeNotifier {
         'echar la salsa cesar por encima',
         'remover'
       ],
-      'ingredientss': [
+      'ingredients': [
         {'ingredient': 'lechuga', 'cantidad': '5 hojas'},
         {'ingredient': 'pollo', 'cantidad': '100 g'},
         {'ingredient': 'queso', 'cantidad': '100 g'},
@@ -272,7 +272,7 @@ class DataProvider with ChangeNotifier {
         'poner mayonesa en la base',
         'poner atun, huevo, lechuda y tomate (por ese orden)'
       ],
-      'ingredientss': [
+      'ingredients': [
         {'ingredient': 'pan bimbo', 'cantidad': '80 panes'},
         {'ingredient': 'atun', 'cantidad': '5 kg'},
         {'ingredient': 'mayonesa', 'cantidad': '500 g'},
@@ -290,7 +290,7 @@ class DataProvider with ChangeNotifier {
         'cortar calabacin, patatas y puerro',
         'meterlo en una olla a 90º'
       ],
-      'ingredientss': [
+      'ingredients': [
         {'ingredient': 'calabacin', 'cantidad': '100 g'},
         {'ingredient': 'patata', 'cantidad': '30 g'},
         {'ingredient': 'puerro', 'cantidad': '30 g'}
@@ -305,7 +305,7 @@ class DataProvider with ChangeNotifier {
         'echar aceite',
         'poner el filete dentro del aceite, no encima, dentro'
       ],
-      'ingredientss': [
+      'ingredients': [
         {'ingredient': 'aceite', 'cantidad': 'no se un chorrito como siempre'},
         {
           'ingredient': 'filetes previamente empanados',
