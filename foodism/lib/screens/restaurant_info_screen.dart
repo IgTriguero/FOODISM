@@ -25,92 +25,92 @@ class RestaurantScreen extends StatelessWidget {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body: Column(
-        children: <Widget>[
-          Hero(
-            tag: restaurante['img'],
-            child: Image.network(
-              restaurante['img'],
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Text(
-            restaurante['name'],
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          Text(
-            restaurante['slogan'],
-            style: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 15,
-            ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                restaurante['rating'],
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 20,
-                ),
-              ),
-              Text(
-                restaurante['tiempo'],
-                style: TextStyle(
-                  color: Theme.of(context).primaryColor,
-                  fontSize: 20,
-                ),
-              )
-            ],
-          ),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Container(
-              height: 100,
-              child: Card(
-                child: InkWell(
-                  child: Center(
-                    child: Text(
-                      'Pedir Receta',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 20,
-                      ),
-                    ),
-                  ),
-                  onTap: () => Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => RecipesScreen(idRestaurante: id,),
-                    ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+        child: Container(
+          height: 100,
+          child: Card(
+            child: InkWell(
+              child: Center(
+                child: Text(
+                  'Pedir Receta',
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 20,
                   ),
                 ),
-                color: Color(0xAAF3B92F),
-                elevation: 0,
+              ),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => RecipesScreen(
+                    idRestaurante: id,
+                  ),
+                ),
               ),
             ),
+            color: Color(0xAAF3B92F),
+            elevation: 0,
           ),
-          SizedBox(
-            height: 20,
-          )
-        ],
+        ),
+      ),
+      body: SingleChildScrollView(
+              child: Column(
+          children: <Widget>[
+            Hero(
+              tag: restaurante['img'],
+              child: Image.network(
+                restaurante['img'],
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              restaurante['name'],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Text(
+              restaurante['slogan'],
+              style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 15,
+              ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Text(
+                  restaurante['rating'],
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  restaurante['tiempo'],
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 20,
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

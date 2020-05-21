@@ -28,6 +28,7 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
   }
 
   _setPersonas(String personas) {
+    print(personas);
     this.people = personas;
   }
 
@@ -145,14 +146,17 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
                       ),
                       onTap: this.currPage == 4
                           ? () {
-                              Provider.of<DataProvider>(context, listen: false)
+                              if(this.nombre != null && this.pasos != [] && this.ingredientes != [] && this.notas != null && this.people != null){
+                                print(this.people);
+                                Provider.of<DataProvider>(context, listen: false)
                                   .addReceta(
                                       this.nombre,
                                       this.pasos,
                                       this.ingredientes,
                                       this.notas,
-                                      this.people);
-                              Navigator.of(context).pop();
+                                      this.people,
+                                  );
+                              Navigator.of(context).pop();}
                             }
                           : () {
                               setState(() {
@@ -173,7 +177,7 @@ class _RecipeCreationScreenState extends State<RecipeCreationScreen> {
             ),
           ),
           SizedBox(
-            height: 50,
+            height: 20,
           )
         ],
       ),
@@ -186,14 +190,14 @@ class Circle extends StatelessWidget {
   Circle([this.relleno = false]);
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
       height: 30,
       width: 30,
       decoration: BoxDecoration(
         border: Border.all(color: Theme.of(context).accentColor),
         shape: BoxShape.circle,
         color: relleno ? Theme.of(context).accentColor : null,
-      ),
+      ), duration: Duration(milliseconds: 300),
     );
   }
 }
@@ -258,7 +262,7 @@ class _Recipe2State extends State<Recipe2> {
     _form.currentState.save();
 
     Map<String, dynamic> articulo = {
-      'ingrediente': _nombreIngrediente,
+      'ingredient': _nombreIngrediente,
       'cantidad': _cantidadIngrediente,
     };
 
@@ -361,7 +365,7 @@ class _Recipe2State extends State<Recipe2> {
                   (item) => ListTile(
                     key: ValueKey(item),
                     title: Text(
-                      item['ingrediente'],
+                      item['ingredient'],
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
                       ),

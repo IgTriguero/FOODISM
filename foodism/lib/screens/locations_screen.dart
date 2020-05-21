@@ -5,6 +5,42 @@ import 'package:provider/provider.dart';
 class LocationsScreen extends StatelessWidget {
   static const routeName = '/locations';
 
+Future<void> _showMyDialog(context) async {
+  String _calle, _numero;
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('AlertDialog Title'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextField(
+                  decoration:
+                      InputDecoration(labelText: "Calle", hintText: "C/ de la Hierbabuena"),
+                  onChanged: (value) => _calle = value,
+                ),
+                TextField(
+                  decoration: InputDecoration(labelText: "Numero", hintText: "nº78"),
+                  onChanged: (value) => _numero = value,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Approve'),
+              onPressed: () {
+                Provider.of<DataProvider>(context, listen: false).addUbicacion(_calle, _numero);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,20 +69,11 @@ class LocationsScreen extends StatelessWidget {
   }
 }
 
-class _ListView extends StatefulWidget {
-  const _ListView({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  __ListViewState createState() => __ListViewState();
-}
-
-class __ListViewState extends State<_ListView> {
+class _ListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> user =
-        Provider.of<DataProvider>(context, listen: false).getCurrentUser();
+        Provider.of<DataProvider>(context).getCurrentUser();
     List locations = user['locations'];
     return locations.length != 0
         ? ListView.builder(
@@ -63,10 +90,8 @@ class __ListViewState extends State<_ListView> {
                   color: Theme.of(context).accentColor,
                 ),
                 onTap: () {
-                  setState(() {
                     Provider.of<DataProvider>(context, listen: false)
                         .setSelectedLocation(index);
-                  });
                 },
               ),
             ),

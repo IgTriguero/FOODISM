@@ -44,29 +44,9 @@ class _LoginScreen extends State<LoginScreen> {
       );
       return;
     }
+    
     Provider.of<DataProvider>(context, listen: false).login(index);
-  }
-
-  void _showDialog(String title, String body) {
-    // flutter defined function
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        // return object of type Dialog
-        return AlertDialog(
-          title: new Text(title),
-          content: new Text(body),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text("Close"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
+    
   }
 
   @override
@@ -162,7 +142,8 @@ class _LoginScreen extends State<LoginScreen> {
             height: 60,
             color: Theme.of(context).primaryColor,
             child: InkWell(
-              onTap: () => {},
+              onTap: () => {Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => RegisterScreen()))},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,

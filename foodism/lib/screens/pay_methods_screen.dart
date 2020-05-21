@@ -1,9 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:foodism/Providers/data.dart';
 import 'package:provider/provider.dart';
 
 class PayMethodsScreen extends StatelessWidget {
   static const routeName = '/pay_methods';
+  String _tarjeta, _mes, _ano;
+  Future<void> _showMyDialog(context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('AlertDialog Title'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextField(
+                  decoration:
+                      InputDecoration(labelText: "Numero de la tarjeta", hintText: "1234 5678 1234 5678"),
+                  onChanged: (value) => _tarjeta = value,
+                ),
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(labelText: "Mes", hintText: "11"),
+                        onChanged: (value) => _mes = value,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(labelText: "Año", hintText: "23"),
+                        onChanged: (value) => _ano = value,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Approve'),
+              onPressed: () {
+                Provider.of<DataProvider>(context, listen: false).addTarjeta(_tarjeta, _mes + "/" + _ano);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +75,7 @@ class PayMethodsScreen extends StatelessWidget {
       ),
       body: _ListView(),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () => _showMyDialog(context),
         child: Icon(
           Icons.add,
           color: Colors.white,
@@ -33,18 +85,7 @@ class PayMethodsScreen extends StatelessWidget {
   }
 }
 
-class _ListView extends StatefulWidget {
-  const _ListView({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  __ListViewState createState() => __ListViewState();
-}
-
-class __ListViewState extends State<_ListView> {
-  int tarjeta = 0;
-
+class _ListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic> user =
@@ -65,10 +106,8 @@ class __ListViewState extends State<_ListView> {
                   color: Theme.of(context).accentColor,
                 ),
                 onTap: () {
-                  setState(() {
                     Provider.of<DataProvider>(context, listen: false)
                         .setSelectedCard(index);
-                  });
                 },
               ),
             ),

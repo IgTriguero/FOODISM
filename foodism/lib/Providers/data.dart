@@ -368,18 +368,19 @@ class DataProvider with ChangeNotifier {
       'people': people
     });
     notifyListeners();
-    print(this.recipes);
   }
 
   addRestaurante(int id) {
     users[usuarioActual]['restaurants'].add(id);
   }
 
-  addTarjeta(String numero) {
+  addTarjeta(String numero, String date) {
     for (int i = 0; i < users[usuarioActual]['cards'].length; i++) {
-      users[usuarioActual]['cards']['selected'] = false;
+      users[usuarioActual]['cards'][i]['selected'] = false;
     }
-    users[usuarioActual]['cards'].add({'number': numero, 'selected': true});
+    users[usuarioActual]['cards']
+        .add({'number': numero, 'date': date, 'selected': true});
+    notifyListeners();
   }
 
   addUbicacion(String calle, String numero) {
@@ -388,6 +389,7 @@ class DataProvider with ChangeNotifier {
     }
     users[usuarioActual]['locations']
         .add({'street': calle, 'number': numero, 'selected': true});
+    notifyListeners();
   }
 
   getCurrentUser() {
@@ -402,6 +404,7 @@ class DataProvider with ChangeNotifier {
         users[usuarioActual]['locations'][i]['selected'] = false;
       }
     }
+    notifyListeners();
   }
 
   setSelectedCard(int index) {
@@ -412,6 +415,7 @@ class DataProvider with ChangeNotifier {
         users[usuarioActual]['cards'][i]['selected'] = false;
       }
     }
+    notifyListeners();
   }
 
   List<Map<String, dynamic>> getRecipes() {

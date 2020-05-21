@@ -1,98 +1,103 @@
 import 'package:flutter/material.dart';
+import 'package:foodism/Providers/data.dart';
 import 'package:foodism/screens/recipes_screen.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(children: [
-        AppBar(
-            title: Text(
-              'FOODISM',
-              style: TextStyle(
-                fontFamily: "BalsamiqSans",
-                color: Theme.of(context).accentColor,
-                fontSize: 40,
+      child: SingleChildScrollView(
+              child: Column(children: [
+          AppBar(
+              title: Text(
+                'FOODISM',
+                style: TextStyle(
+                  fontFamily: "BalsamiqSans",
+                  color: Theme.of(context).accentColor,
+                  fontSize: 40,
+                ),
               ),
+              backgroundColor: Colors.transparent,
+              elevation: 0.0,
+              iconTheme: new IconThemeData(
+                color: Colors.transparent,
+              )),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.person,
+              color: Color(0xFF75440B),
             ),
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            iconTheme: new IconThemeData(
-              color: Colors.transparent,
-            )),
-        Divider(),
-        ListTile(
-          leading: Icon(
-            Icons.person,
-            color: Color(0xFF75440B),
+            title: Text('Información personal', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed("/personal_info");
+            },
           ),
-          title: Text('Información personal', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed("/personal_info");
-          },
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(
-            Icons.payment,
-            color: Color(0xFF75440B),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.payment,
+              color: Color(0xFF75440B),
+            ),
+            title: Text('Métodos de pago', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed("/pay_methods");
+            },
           ),
-          title: Text('Métodos de pago', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed("/pay_methods");
-          },
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(
-            Icons.location_on,
-            color: Color(0xFF75440B),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.location_on,
+              color: Color(0xFF75440B),
+            ),
+            title: Text('Ubicaciones', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed("/locations");
+            },
           ),
-          title: Text('Ubicaciones', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed("/locations");
-          },
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(
-            Icons.book,
-            color: Color(0xFF75440B),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.book,
+              color: Color(0xFF75440B),
+            ),
+            title: Text('Recetas', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => RecipesScreen()));
+            },
           ),
-          title: Text('Recetas', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => RecipesScreen()));
-          },
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(
-            Icons.exit_to_app,
-            color: Color(0xFF75440B),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.exit_to_app,
+              color: Color(0xFF75440B),
+            ),
+            title: Text('Cerrar sesion', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
+            onTap: () {
+              Provider.of<DataProvider>(context, listen: false).logout();
+              //Navigator.of(context).pop();
+              //Navigator.of(context).pushReplacementNamed('/login');
+            },
           ),
-          title: Text('Cerrar sesion', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushReplacementNamed('/login');
-          },
-        ),
-        Divider(),
-        ListTile(
-          leading: Icon(
-            Icons.help,
-            color: Color(0xFF75440B),
+          Divider(),
+          ListTile(
+            leading: Icon(
+              Icons.help,
+              color: Color(0xFF75440B),
+            ),
+            title: Text('Ayuda', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed("/help");
+            },
           ),
-          title: Text('Ayuda', style: TextStyle(color: Color(0xFF75440B), fontSize: 18),),
-          onTap: () {
-            Navigator.of(context).pop();
-            Navigator.of(context).pushNamed("/help");
-          },
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 }
