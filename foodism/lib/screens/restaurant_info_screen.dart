@@ -26,7 +26,7 @@ class RestaurantScreen extends StatelessWidget {
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 50),
         child: Container(
           height: 100,
           child: Card(
@@ -54,7 +54,7 @@ class RestaurantScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-              child: Column(
+        child: Column(
           children: <Widget>[
             Hero(
               tag: restaurante['img'],

@@ -41,9 +41,12 @@ class RecipesScreen extends StatelessWidget {
                   color: Theme.of(context).primaryColor, fontSize: 18),
             ),
           Expanded(
-              child: _ListView(
-            getIdChef: this.idChef,
-            getIdRestaurante: this.idRestaurante,
+              child: Padding(
+            padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+            child: _ListView(
+              getIdChef: this.idChef,
+              getIdRestaurante: this.idRestaurante,
+            ),
           )),
         ],
       ),

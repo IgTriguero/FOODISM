@@ -32,8 +32,8 @@ class _LoginScreen extends State<LoginScreen> {
     this._formKey.currentState.save();
     final index = Provider.of<DataProvider>(context, listen: false)
         .users
-        .indexWhere(
-            (user) => user['email'] == _email.trim() && user['password'] == _password);
+        .indexWhere((user) =>
+            user['email'] == _email.trim() && user['password'] == _password);
 
     if (index < 0) {
       _scaffoldKey.currentState.showSnackBar(
@@ -44,9 +44,8 @@ class _LoginScreen extends State<LoginScreen> {
       );
       return;
     }
-    
+
     Provider.of<DataProvider>(context, listen: false).login(index);
-    
   }
 
   @override
@@ -70,7 +69,7 @@ class _LoginScreen extends State<LoginScreen> {
                         Text(
                           'FOODISM',
                           style: TextStyle(
-                            fontSize: 40,
+                            fontSize: 60,
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).accentColor,
                             fontFamily: 'BalsamiqSans',
@@ -142,8 +141,10 @@ class _LoginScreen extends State<LoginScreen> {
             height: 60,
             color: Theme.of(context).primaryColor,
             child: InkWell(
-              onTap: () => {Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => RegisterScreen()))},
+              onTap: () => {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => RegisterScreen()))
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,

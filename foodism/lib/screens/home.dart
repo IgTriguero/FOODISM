@@ -10,7 +10,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FOODISM',style: TextStyle(fontFamily: "BalsamiqSans",color: Theme.of(context).accentColor,fontSize: 40),),
+        title: Text(
+          'FOODISM',
+          style: TextStyle(
+              fontFamily: "BalsamiqSans",
+              color: Theme.of(context).accentColor,
+              fontSize: 40),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
@@ -20,16 +26,40 @@ class HomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          Spacer(),
+          Text(
+            '¿Qué te apetece?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 20,
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
           Flexible(
             child: Card(
               child: InkWell(
                 child: Center(
-                  child: Text(
-                    'Comida a domicilio',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 28,
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Comida',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 40,
+                        ),
+                      ),
+                      Text(
+                        'a domicilio',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 onTap: () {
@@ -38,18 +68,34 @@ class HomeScreen extends StatelessWidget {
               ),
               color: Color(0xAAF3B92F),
               elevation: 0,
+              margin: new EdgeInsets.symmetric(horizontal: 20.0),
             ),
+          ),
+          SizedBox(
+            height: 15,
           ),
           Flexible(
             child: Card(
               child: InkWell(
                 child: Center(
-                  child: Text(
-                    'Chef a domicilio',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 28,
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Chef',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 40,
+                        ),
+                      ),
+                      Text(
+                        'a domicilio',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 onTap: () {
@@ -58,8 +104,10 @@ class HomeScreen extends StatelessWidget {
               ),
               color: Color(0xAAF3B92F),
               elevation: 0,
+              margin: new EdgeInsets.symmetric(horizontal: 20.0),
             ),
           ),
+          Spacer(),
         ],
       ),
     );

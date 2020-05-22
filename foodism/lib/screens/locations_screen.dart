@@ -57,7 +57,10 @@ Future<void> _showMyDialog(context) async {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body: _ListView(),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 20,left: 10,right: 10),
+        child: _ListView(),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: null,
         child: Icon(
