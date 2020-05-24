@@ -13,34 +13,50 @@ class PedidoAceptadoScreen extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Spacer(),
-          Text('FOODISM', style: TextStyle(color: Theme.of(context).accentColor, fontSize: 50, fontFamily: 'BalsamiqSans'),),
-          Icon(Icons.check, size: 200, color: Theme.of(context).primaryColor,),
-          Text('¡Pedido en camino!', style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 20, fontFamily: 'CeraPro'),),
+          Text(
+            'FOODISM',
+            style: TextStyle(
+                color: Theme.of(context).accentColor,
+                fontSize: 50,
+                fontFamily: 'BalsamiqSans'),
+          ),
+          Icon(
+            Icons.check,
+            size: 200,
+            color: Theme.of(context).primaryColor,
+          ),
+          Text(
+            '¡Pedido en camino!',
+            style: TextStyle(
+                color: Theme.of(context).primaryColor,
+                fontSize: 20,
+                fontFamily: 'CeraPro'),
+          ),
           SizedBox(
             height: 100,
           ),
           Container(
             child: Card(
-                child: InkWell(
-                  child: Center(
-                    child: Text(
-                      'Volver a inicio',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 20,
-                      ),
+              child: InkWell(
+                child: Center(
+                  child: Text(
+                    'Volver a inicio',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 20,
                     ),
                   ),
-                  onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pushReplacementNamed("/");
-                  },
                 ),
-                color: Color(0xAAF3B92F),
-                elevation: 0,
-                margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacementNamed("/");
+                },
               ),
-              height: 100,
+              color: Color(0xAAF3B92F),
+              elevation: 0,
+              margin: new EdgeInsets.symmetric(horizontal: 20.0),
+            ),
+            height: 100,
           ),
           Spacer(),
         ],

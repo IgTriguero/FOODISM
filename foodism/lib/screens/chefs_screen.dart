@@ -8,8 +8,7 @@ class ChefsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> chefs =
-        Provider.of<DataProvider>(context).chefs;
+    List<Map<String, dynamic>> chefs = Provider.of<DataProvider>(context).chefs;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -24,12 +23,16 @@ class ChefsScreen extends StatelessWidget {
         elevation: 0.0,
         iconTheme: new IconThemeData(color: Theme.of(context).accentColor),
       ),
-      body:ListView.separated(
+      body: ListView.separated(
         separatorBuilder: (context, index) => Divider(),
         itemCount: chefs.length,
         itemBuilder: (context, index) => ListTile(
-          title: Text(chefs[index]['name']),
-          subtitle: Text(chefs[index]['rating'] + "\n" + chefs[index]['tiempo']),
+          title: Text(
+            chefs[index]['name'],
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
+          subtitle:
+              Text(chefs[index]['rating'] + "\n" + chefs[index]['tiempo']),
           isThreeLine: true,
           leading: Hero(
             tag: chefs[index]['img'],

@@ -75,7 +75,12 @@ class _ListView extends StatelessWidget {
             itemCount: recipes.length,
             itemBuilder: (context, index) => Card(
               child: ListTile(
-                title: Text(recipes[index]['name']),
+                title: Text(
+                  recipes[index]['name'],
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
                 subtitle: Text("${recipes[index]['people']} personas"),
                 onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(
