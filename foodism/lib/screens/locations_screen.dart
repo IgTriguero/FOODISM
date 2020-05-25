@@ -12,7 +12,7 @@ Future<void> _showMyDialog(context) async {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('AlertDialog Title'),
+          title: Text('Añade tu dirección'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -62,7 +62,7 @@ Future<void> _showMyDialog(context) async {
         child: _ListView(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: () => _showMyDialog(context),
         child: Icon(
           Icons.add,
           color: Colors.white,

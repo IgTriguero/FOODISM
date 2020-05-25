@@ -12,7 +12,7 @@ class PayMethodsScreen extends StatelessWidget {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('AlertDialog Title'),
+          title: Text('Añade tu tarjeta'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[

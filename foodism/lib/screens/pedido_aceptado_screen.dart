@@ -32,8 +32,7 @@ class PedidoAceptadoScreen extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pushReplacementNamed("/");
+                    Navigator.of(context).popUntil(ModalRoute.withName("/"));
                   },
                 ),
                 color: Color(0xAAF3B92F),
