@@ -59,40 +59,84 @@ class RecipeInfoScreen extends StatelessWidget {
             )
           : null,
       body: SingleChildScrollView(
-              child: Column(
+        child: Column(
           children: <Widget>[
             ListTile(
-              title: Text(receta['name']),
+              title: Text(
+                receta['name'],
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
               subtitle: Text(receta['people'] + " personas"),
             ),
             ExpansionTile(
-              title: Text('Ingredientes'),
-              leading: Icon(Icons.event),
+              title: Text(
+                'Ingredientes',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              leading: Icon(
+                Icons.local_pizza,
+                color: Theme.of(context).primaryColor,
+              ),
               children: <Widget>[
                 for (var i = 0; i < receta['ingredients'].length; i++)
                   ListTile(
-                    title:
-                        Text(receta['ingredients'][i]['ingredient']),
+                    title: Text(
+                      receta['ingredients'][i]['ingredient'],
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
                     trailing: Container(
                         width: 100,
                         child: Text(
-                            receta['ingredients'][i]['cantidad'])),
+                          receta['ingredients'][i]['cantidad'],
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        )),
                   ),
               ],
             ),
             ExpansionTile(
-              title: Text('Pasos'),
-              leading: Icon(Icons.event),
+              title: Text(
+                'Pasos',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
+              leading: Icon(
+                Icons.format_list_numbered,
+                color: Theme.of(context).primaryColor,
+              ),
               children: <Widget>[
                 for (var i = 0; i < receta['steps'].length; i++)
                   ListTile(
-                    title: Text(receta['steps'][i]),
-                    leading: Text("${i + 1}"),
+                    title: Text(
+                      receta['steps'][i],
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
+                    leading: Text(
+                      "${i + 1}",
+                      style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
                   ),
               ],
             ),
             ListTile(
-              title: Text("Notas"),
+              title: Text(
+                "Notas",
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
               subtitle: Text(receta['notes']),
             ),
           ],

@@ -29,8 +29,15 @@ class RestaurantsScreen extends StatelessWidget {
         separatorBuilder: (context, index) => Divider(),
         itemCount: restaurantes.length,
         itemBuilder: (context, index) => ListTile(
-          title: Text(restaurantes[index]['name']),
-          subtitle: Text(restaurantes[index]['rating'] + "\n" + restaurantes[index]['tiempo']),
+          title: Text(
+            restaurantes[index]['name'],
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+            ),
+          ),
+          subtitle: Text(restaurantes[index]['rating'] +
+              "\n" +
+              restaurantes[index]['tiempo']),
           isThreeLine: true,
           leading: Hero(
             tag: restaurantes[index]['img'],
